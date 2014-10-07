@@ -23,7 +23,7 @@ In order to place a box wherever a user wants, we must have a cursor controlled 
 | Line | `R12` | `R13` | Purpose |
 |------|-------|-------|---------|
 | 66 | `0x01` | `0xE7` | Draws 8-bit high beam with 2-bit gap |
-| 277 | `0x00` | `0xB9` | Mask out any weird nibble bits <br> mask in "BO" as the prefix for a page address |
+| 277 | `0x00` | `0xB6` | Mask out any weird nibble bits <br> mask in "BO" as the prefix for a page address |
 | 289 | `0x00` | `0x11` | Mask out upper nibble <br> 10 is the prefix for an upper column address |
 | 295 | `0x00` | `0x06` | Set up call for next instruction |
 
@@ -37,7 +37,7 @@ In order to place a box wherever a user wants, we must have a cursor controlled 
 | Line | Command/Data | 8-Bit Packet |
 |------|-------|-------|---------|
 | 66 | Data | `0xE7` |
-| 277 | Command | `0xB9` |
+| 277 | Command | `0xB6` |
 | 289 | Command | `0x11` |
 | 295 | Command | `0x06` |
 
