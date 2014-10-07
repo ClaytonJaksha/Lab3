@@ -129,7 +129,7 @@ movedown:
 	jmp		while1
 ```
 #### Subroutine: `makethebox`
-This here is the money-maker subroutine. 
+This here is the money-maker subroutine.  It draws a single, solid, 8-bit line, 8 times in a row from the initial cursor point. This creates a box.
 ```
 makethebox:
 	inc		R11
@@ -151,24 +151,26 @@ donebreak:
 
 ## Debugging
 
-
+Debugging was primarily done by looking at the Nokia 1202 display and the stored register values within CCS-6.0's debugging feature.
 
 ## Testing Methodology/Results
 
+I was able to meet the required and "A" functionality.
 
+### Required Functionality
 
-#### Required Functionality
-
+##### Here we see a vast wasteland of LCD pixels.
 ![alt text](http://i.imgur.com/yFz0D83.jpg "A vast wasteland of LCD pixels...")
-
+##### Press `SW3` and a wild box appears!
 ![alt text](http://i.imgur.com/HcHysIj.jpg "A WILD BOX APPEARS!")
 
-#### A Functionality
+### A Functionality
 
+##### Press the right button (`SW1`) and then hit `SW3` again and another box appears directly beneath the first.
 ![alt text](http://i.imgur.com/qPnxqb5.jpg "TWO wild boxes appear!")
-
+##### This time follow the same procedure, but with the down button (`SW4`).
 ![alt text](http://i.imgur.com/UiEswiK.jpg "Stop the madness!")
-
+##### With this code, you can skip spaces and basically put a box wherever you want. It's pretty cool!
 ![alt text](http://i.imgur.com/7zLSPcI.jpg "This could quickly turn into the most self-defeating game of snake")
 
 ## Observations and Conclusion
