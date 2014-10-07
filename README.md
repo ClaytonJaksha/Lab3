@@ -42,6 +42,9 @@ The first non-bused signal is `SMCLK`, the second is `MOSI`
 | 289 | Command | `0x11` |
 | 295 | Command | `0x06` |
 
+
+##### Reset Signal
+In order to capture the reset signal, I had to reload the program on the MSP430 while the logic analyzer was running. The below logical analyzer printout shows that the reset signal (annotated) is applied for roughly 20ms after the program is loaded.
 ![alt text](http://i.imgur.com/AnmCYr4.jpg "Reset Timing")
 
 ## Code Walkthrough
