@@ -1,6 +1,6 @@
 
 ;-------------------------------------------------------------------------------
-;	Chris Coulston
+;	Chris Coulston & Clayton Jaksha
 ;	Fall 2014
 ;	MSP430G2553
 ;	Draw a new vertical bar on the Nokia 1202 display everytime that SW3
@@ -53,26 +53,40 @@ main:
 
 	clr		R10							; used to move the cursor around
 	clr		R11
+	clr 	r14
 
 while1:
 	bit.b	#8, &P2IN					; bit 3 of P1IN set?
 	jnz 	while1						; Yes, branch back and wait
 
+
 while0:
 	bit.b	#8, &P2IN					; bit 3 of P1IN clear?
 	jz		while0						; Yes, branch back and wait
+	push	r10
+	push	r11
 
-	mov		#NOKIA_DATA, R12			; For testing just draw an 8 pixel high
-	mov		#0xE7, R13					; beam with a 2 pixel hole in the center
-	call	#writeNokiaByte
+makethebox:
 
-	inc		R10							; since rows are 8 times bigger than columns
-	and.w	#0x07, R10					; wrap over the row mod 8
-	inc		R11							; just let the columm overflow after 92 buttons
+
+	inc		R11
+	inc		r14							; just let the columm overflow after 92 buttons
 	mov		R10, R12					; increment the row
 	mov		R11, R13					; and column of the next beam
 	call	#setAddress					; we draw
 
+	mov		#NOKIA_DATA, R12			; For testing just draw an 8 pixel high
+	mov		#0xFF, R13					; beam with a 2 pixel hole in the center
+	call	#writeNokiaByte
+
+	cmp		#8, r14
+	jeq		donebreak
+	jmp		makethebox
+
+donebreak:
+	pop		r10
+	pop		r11
+	clr		r14
 	jmp		while1
 
 ;-------------------------------------------------------------------------------
