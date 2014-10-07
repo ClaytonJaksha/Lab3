@@ -1,6 +1,6 @@
 
 ;-------------------------------------------------------------------------------
-;	Chris Coulston & Clayton Jaksha
+;	Chris Coulston
 ;	Fall 2014
 ;	MSP430G2553
 ;	Draw a new vertical bar on the Nokia 1202 display everytime that SW3
@@ -56,8 +56,21 @@ main:
 	clr 	r14
 
 while1:
-	bit.b	#8, &P2IN					; bit 3 of P1IN set?
-	jnz 	while1						; Yes, branch back and wait
+	bit.b	#8, &P2IN
+	jz		while0					; bit 3 of P1IN set?
+whileleft:
+	bit.b	#BIT2, &P2IN
+	jz		moveleft
+whileright:
+	bit.b	#BIT1, &P2IN
+	jz		moveright
+whileup:
+	bit.b	#BIT5, &P2IN
+	jz		moveup
+whiledown:
+	bit.b	#BIT4, &P2IN
+	jz		movedown
+	jmp		while1						; Yes, branch back and wait
 
 
 while0:
@@ -65,10 +78,34 @@ while0:
 	jz		while0						; Yes, branch back and wait
 	push	r10
 	push	r11
+	call	#makethebox
+	pop		r11
+	pop		r10
+	clr		r14
+	jmp		while1
+
+moveright:
+	bit.b	#BIT1, &P2IN					; bit 3 of P1IN clear?
+	jz		moveright
+	add		#8, r11
+	jmp		while1
+moveleft:
+	bit.b	#BIT2, &P2IN					; bit 3 of P1IN clear?
+	jz		moveleft
+	sub		#8, r11
+	jmp		while1
+moveup:
+	bit.b	#BIT5, &P2IN					; bit 3 of P1IN clear?
+	jz		moveup
+	dec		r10
+	jmp		while1
+movedown:
+	bit.b	#BIT4, &P2IN					; bit 3 of P1IN clear?
+	jz		movedown
+	inc		r10
+	jmp		while1
 
 makethebox:
-
-
 	inc		R11
 	inc		r14							; just let the columm overflow after 92 buttons
 	mov		R10, R12					; increment the row
@@ -82,13 +119,8 @@ makethebox:
 	cmp		#8, r14
 	jeq		donebreak
 	jmp		makethebox
-
 donebreak:
-	pop		r10
-	pop		r11
-	clr		r14
-	jmp		while1
-
+	ret
 ;-------------------------------------------------------------------------------
 ;	Name:		initNokia		68(rows)x92(columns)
 ;	Inputs:		none
