@@ -51,6 +51,8 @@ In order to create this delay, the program counts backwards from `0xFFFF` to `0x
 
 ## Code Walkthrough
 
+Most of the code belongs to Dr. Coulston, so I will only discuss my *novel contributions* to his code that enabled me to make lots of cool boxes wherever I want.
+
 ```
 main:
 	mov.w   #__STACK_END,SP				; Initialize stackpointer
