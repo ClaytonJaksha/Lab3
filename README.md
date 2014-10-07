@@ -70,6 +70,8 @@ main:
 	clr		R11
 	clr 	r14
 ```
+#### Polling
+This section of code polls for any button presses. If `SW3` is pressed, it gets ready to build a box. If any of the others are pressed, it moves the cursor to where the user wants to build his or her next box.
 ```
 while1:
 	bit.b	#8, &P2IN
@@ -88,6 +90,8 @@ whiledown:
 	jz		movedown
 	jmp		while1						; Yes, branch back and wait
 ```
+#### Preparing to Build
+After the user has decided that it's time to build a box, the code waits for the user to let go of the button. Then, we push the values of the cursor, call the box-making subroutine, and pop the cursor values back. After that's all done, we go back to polling.
 ```
 while0:
 	bit.b	#8, &P2IN					; bit 3 of P1IN clear?
@@ -100,38 +104,42 @@ while0:
 	clr		r14
 	jmp		while1
 ```
+#### Moving the Cursor
+If the user decides that they want to move the cursor and put a box somewhere new and exciting, they come to these loops. Depending on what button was pressed, it will call one of the loops (the names are pretty self explanatory). First, each loops checks to see if the button has been let go of. Then it moves the cursor to one block's length in the desired direction and goes back to polling.
 ```
 moveright:
-	bit.b	#BIT1, &P2IN					; bit 3 of P1IN clear?
+	bit.b	#BIT1, &P2IN					
 	jz		moveright
 	add		#8, r11
 	jmp		while1
 moveleft:
-	bit.b	#BIT2, &P2IN					; bit 3 of P1IN clear?
+	bit.b	#BIT2, &P2IN					
 	jz		moveleft
 	sub		#8, r11
 	jmp		while1
 moveup:
-	bit.b	#BIT5, &P2IN					; bit 3 of P1IN clear?
+	bit.b	#BIT5, &P2IN					
 	jz		moveup
 	dec		r10
 	jmp		while1
 movedown:
-	bit.b	#BIT4, &P2IN					; bit 3 of P1IN clear?
+	bit.b	#BIT4, &P2IN					
 	jz		movedown
 	inc		r10
 	jmp		while1
 ```
+#### Subroutine: `makethebox`
+This here is the money-maker subroutine. 
 ```
 makethebox:
 	inc		R11
-	inc		r14							; just let the columm overflow after 92 buttons
+	inc		r14							
 	mov		R10, R12					; increment the row
 	mov		R11, R13					; and column of the next beam
 	call	#setAddress					; we draw
 
-	mov		#NOKIA_DATA, R12			; For testing just draw an 8 pixel high
-	mov		#0xFF, R13					; beam with a 2 pixel hole in the center
+	mov		#NOKIA_DATA, R12			
+	mov		#0xFF, R13					
 	call	#writeNokiaByte
 
 	cmp		#8, r14
@@ -140,14 +148,6 @@ makethebox:
 donebreak:
 	ret
 ```
-
-#### Initialization
-
-
-
-#### Main Loop
-
-
 
 ## Debugging
 
