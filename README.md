@@ -49,7 +49,87 @@ In order to capture the reset signal, I had to reload the program on the MSP430 
 
 ## Code Walkthrough
 
+```
+main:
+	mov.w   #__STACK_END,SP				; Initialize stackpointer
+	mov.w   #WDTPW|WDTHOLD, &WDTCTL  	; Stop watchdog timer
+	dint								; disable interrupts
 
+	call	#init						; initialize the MSP430
+	call	#initNokia					; initialize the Nokia 1206
+	call	#clearDisplay				; clear the display and get ready....
+
+	clr		R10							; used to move the cursor around
+	clr		R11
+	clr 	r14
+
+while1:
+	bit.b	#8, &P2IN
+	jz		while0					; bit 3 of P1IN set?
+whileleft:
+	bit.b	#BIT2, &P2IN
+	jz		moveleft
+whileright:
+	bit.b	#BIT1, &P2IN
+	jz		moveright
+whileup:
+	bit.b	#BIT5, &P2IN
+	jz		moveup
+whiledown:
+	bit.b	#BIT4, &P2IN
+	jz		movedown
+	jmp		while1						; Yes, branch back and wait
+
+
+while0:
+	bit.b	#8, &P2IN					; bit 3 of P1IN clear?
+	jz		while0						; Yes, branch back and wait
+	push	r10
+	push	r11
+	call	#makethebox
+	pop		r11
+	pop		r10
+	clr		r14
+	jmp		while1
+
+moveright:
+	bit.b	#BIT1, &P2IN					; bit 3 of P1IN clear?
+	jz		moveright
+	add		#8, r11
+	jmp		while1
+moveleft:
+	bit.b	#BIT2, &P2IN					; bit 3 of P1IN clear?
+	jz		moveleft
+	sub		#8, r11
+	jmp		while1
+moveup:
+	bit.b	#BIT5, &P2IN					; bit 3 of P1IN clear?
+	jz		moveup
+	dec		r10
+	jmp		while1
+movedown:
+	bit.b	#BIT4, &P2IN					; bit 3 of P1IN clear?
+	jz		movedown
+	inc		r10
+	jmp		while1
+
+makethebox:
+	inc		R11
+	inc		r14							; just let the columm overflow after 92 buttons
+	mov		R10, R12					; increment the row
+	mov		R11, R13					; and column of the next beam
+	call	#setAddress					; we draw
+
+	mov		#NOKIA_DATA, R12			; For testing just draw an 8 pixel high
+	mov		#0xFF, R13					; beam with a 2 pixel hole in the center
+	call	#writeNokiaByte
+
+	cmp		#8, r14
+	jeq		donebreak
+	jmp		makethebox
+donebreak:
+	ret
+```
 
 #### Initialization
 
