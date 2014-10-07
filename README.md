@@ -87,8 +87,8 @@ whiledown:
 	bit.b	#BIT4, &P2IN
 	jz		movedown
 	jmp		while1						; Yes, branch back and wait
-
-
+```
+```
 while0:
 	bit.b	#8, &P2IN					; bit 3 of P1IN clear?
 	jz		while0						; Yes, branch back and wait
@@ -99,7 +99,8 @@ while0:
 	pop		r10
 	clr		r14
 	jmp		while1
-
+```
+```
 moveright:
 	bit.b	#BIT1, &P2IN					; bit 3 of P1IN clear?
 	jz		moveright
@@ -120,7 +121,8 @@ movedown:
 	jz		movedown
 	inc		r10
 	jmp		while1
-
+```
+```
 makethebox:
 	inc		R11
 	inc		r14							; just let the columm overflow after 92 buttons
