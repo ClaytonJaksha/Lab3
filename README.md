@@ -46,7 +46,7 @@ The first non-bused signal is `SMCLK`, the second is `MOSI`
 ##### Reset Signal
 In order to capture the reset signal, I had to reload the program on the MSP430 while the logic analyzer was running. The below logical analyzer printout shows that the reset signal (annotated) is applied for roughly 20ms after the program is loaded.
 
-In order to create this delay, the program counts backwards from `0xFFFF` to `0x0000` using `dec` command. Simple math reveals that each count takes 0.020627sec/0xFFFF=3.147x10^-7 sec= **0.315 ns**
+In order to create this delay, the program counts backwards from `0xFFFF` to `0x0000` using `dec` command. Simple math reveals that each count takes 0.020627sec/0xFFFF=3.147x10^-7 sec= **315 ns**
 ![alt text](http://i.imgur.com/AnmCYr4.jpg "Reset Timing")
 
 ## Code Walkthrough
