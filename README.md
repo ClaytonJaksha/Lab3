@@ -5,11 +5,11 @@ Lab 3
 ## Objective and Purpose
 ### Objective
 
-
+The objective of this lab is to manipulate the Nokia 1202 display with the MSP430 microcontroller by use of its front-panel buttons. We must create a box and then create new boxes based off of the user's input into direction control boxes.
 
 ### Purpose
 
-
+The purpose of this lab is to familiarize us with SPI, I/O, and hardware/software interface.
 
 ## Preliminary Design
 
