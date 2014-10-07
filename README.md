@@ -79,26 +79,28 @@ The decryped message appears to be correct based off of its contents.
 
 #### A Functionality
 
-Given an encrypted message of `0x35,0xdf,0x00,0xca,0x5d,0x9e,0x3d,0xdb,0x12,0xca,0x5d,0x9e,0x32,0xc8,0x16,0xcc,0x12,0xd9,0x16,0x90,0x53,0xf8,0x01,0xd7,0x16,0xd0,0x17,0xd2,0x0a,0x90,0x53,0xf9,0x1c,0xd1,0x17,0x90,0x53,0xf9,0x1c,0xd1,0x17,0x90` and no key. I decrypted it to be the following:
+![alt text](http://i.imgur.com/qPnxqb5.jpg "TWO wild boxes appear")
 
-![alt text](http://i.imgur.com/KsmQd8K.png "A Functionality")
+![alt text](http://i.imgur.com/UiEswiK.jpg "Stop the madness!")
+
+![alt text](http://i.imgur.com/7zLSPcI.jpg "This could quickly turn into the most self-defeating game of snake")
 
 I feel this answer is correct as it is sensible and composed of only letters, spaces, and periods.
 
 ## Observations and Conclusion
 #### Observations
 
-* Subroutine calls require the immediate addressing of the label they are trying to call, otherwise everything will get messed up.
-* The xor encryption is a very simple encryption; decrypting more challenging message without knowledge of its encryption process or its key would be far more challenging.
-* The testing for this code could have taken <i>far</i> longer than it actually did. There were (1+1+26+26)^2 possible different guesses. Having some sense of where bytes frequently appear is helpful in reducing the amount of tries it takes to correctly guess it.
+* If a single step in SPI is messed up, the whole thing will not work.
+* Outputting data is not as simple as writing to a port.
+
 
 #### Conclusion
 
-The objective of this lab was to design code that would take a message, a key (or none), and return a decrypted message in memory. I was able to meet these requirements to their fullest required extent.
+The objective of this lab was to design code create boxes located on the user's locational input. I successfully met this objective.
 
 ## Documentation
 
-I referenced the follwoing [ASCII table](http://benborowiec.com/wp-content/uploads/2011/07/better_ascii_table.jpg) in the planning and development of this code.
+None
 
 
 # GO ARMY, BEAT AIR FORCE
