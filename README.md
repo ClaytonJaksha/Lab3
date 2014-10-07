@@ -100,4 +100,6 @@ The objective of this lab was to design code that would take a message, a key (o
 
 I referenced the follwoing [ASCII table](http://benborowiec.com/wp-content/uploads/2011/07/better_ascii_table.jpg) in the planning and development of this code.
 
+
+# GO ARMY, BEAT AIR FORCE
 ![alt text](http://i.imgur.com/hxyaK0K.jpg "GO ARMY, BEAT AIR FORCE")
