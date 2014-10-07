@@ -27,7 +27,8 @@ In order to place a box wherever a user wants, we must have a cursor controlled 
 | 289 | `0x00` | `0x11` | Mask out upper nibble <br> 10 is the prefix for an upper column address |
 | 295 | `0x00` | `0x06` | Set up call for next instruction |
 
-
+##### The four signals sent to the Nokia 1202 as seen by the logic analyzer
+The first non-bused signal is `SMCLK`, the second is `MOSI`
 ![alt text](http://i.imgur.com/beL5Rfg.jpg "1st Signal")
 ![alt text](http://i.imgur.com/YfaUCrU.jpg "2nd Signal")
 ![alt text](http://i.imgur.com/Al6VBRp.jpg "3rd Signal")
