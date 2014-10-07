@@ -24,8 +24,10 @@ Lab 3
 | 298 | `#NOKIA_CMD` | `0x11` | Mask out upper nibble <br> 10 is the prefix for an upper column address |
 | 295 | `#NOKIA_CMD` | `0x06` | Set up call for next instruction |
 
-
-
+| Line | Command/Data | 8-Bit Packet |
+|------|-------|-------|---------|
+| 66 |  | `0xE7` |
+| 277 |  | `
 
 #### Initialization
 
