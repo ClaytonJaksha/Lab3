@@ -13,6 +13,9 @@ The purpose of this lab is to familiarize us with SPI, I/O, and hardware/softwar
 
 ## Preliminary Design
 
+In order to make a box, I must make a straight line and then repeat the line in 7 adjacent columns. This can be made into a subroutine.
+
+In order to place a box wherever a user wants, we must have a cursor controlled by the Nokia 1202 buttons. Then, at the desired cursor locations, call the subroutine that creates a box.
 
 ## Required Tables/Logic Analyzer
 
