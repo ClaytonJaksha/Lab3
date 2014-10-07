@@ -166,7 +166,7 @@ I was able to meet the required and "A" functionality.
 
 ### A Functionality
 
-##### Press the right button (`SW1`) and then hit `SW3` again and another box appears directly beneath the first.
+##### Press the right button (`SW1`) and then hit `SW3` again and another box appears directly next to the first.
 ![alt text](http://i.imgur.com/qPnxqb5.jpg "TWO wild boxes appear!")
 ##### This time follow the same procedure, but with the down button (`SW4`).
 ![alt text](http://i.imgur.com/UiEswiK.jpg "Stop the madness!")
