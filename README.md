@@ -20,9 +20,12 @@ Lab 3
 | Line | `R12` | `R13` | Purpose |
 |------|-------|-------|---------|
 | 66 | `#NOKIA_DATA` | `0xE7` | Draws 8-bit high beam with 2-bit gap |
-| 277 | `0x0F` | `0xB0` | Mask out any weird nibble bits <br> <\br> mask in "BO" as the prefix for a page address |
-|
-|
+| 277 | `#NOKIA_CMD` | `0xB9` | Mask out any weird nibble bits <br> mask in "BO" as the prefix for a page address |
+| 298 | `#NOKIA_CMD` | `0x11` | Mask out upper nibble <br> 10 is the prefix for an upper column address |
+| 295 | `#NOKIA_CMD` | `0x06` | Set up call for next instruction |
+
+
+
 
 #### Initialization
 
