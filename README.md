@@ -51,8 +51,11 @@ In order to create this delay, the program counts backwards from `0xFFFF` to `0x
 
 ## Code Walkthrough
 
-Most of the code belongs to Dr. Coulston, so I will only discuss my *novel contributions* to his code that enabled me to make lots of cool boxes wherever I want.
+Most of the code belongs to Dr. Coulston, so I will only discuss my *novel contributions* to his code that enabled me to make lots of cool boxes wherever I want. My contributions were limited to the main loop and the creation of one subroutine; I will only discuss these parts.
 
+
+#### Initialization
+This section initializes the MSP430 and the Nokia Display, then clears the display for use. Then we clear `r10`, `r11`, and `r14` because they will be used later on in the main loop.
 ```
 main:
 	mov.w   #__STACK_END,SP				; Initialize stackpointer
@@ -66,7 +69,8 @@ main:
 	clr		R10							; used to move the cursor around
 	clr		R11
 	clr 	r14
-
+```
+```
 while1:
 	bit.b	#8, &P2IN
 	jz		while0					; bit 3 of P1IN set?
