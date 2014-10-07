@@ -14,9 +14,9 @@ The purpose of this lab is to familiarize us with SPI, I/O, and hardware/softwar
 ## Preliminary Design
 
 
+## Required Tables/Logic Analyzer
 
-## Code Walkthrough
-
+##### Data Packets Coded to be Sent
 | Line | `R12` | `R13` | Purpose |
 |------|-------|-------|---------|
 | 66 | `0x01` | `0xE7` | Draws 8-bit high beam with 2-bit gap |
@@ -24,12 +24,25 @@ The purpose of this lab is to familiarize us with SPI, I/O, and hardware/softwar
 | 289 | `0x00` | `0x11` | Mask out upper nibble <br> 10 is the prefix for an upper column address |
 | 295 | `0x00` | `0x06` | Set up call for next instruction |
 
+
+![alt text](http://i.imgur.com/beL5Rfg.jpg "1st Signal")
+![alt text](http://i.imgur.com/YfaUCrU.jpg "2nd Signal")
+![alt text](http://i.imgur.com/Al6VBRp.jpg "3rd Signal")
+![alt text](http://i.imgur.com/xX3yULg.jpg "4th Signal")
+
+##### Signals Sent to Nokia 1202
 | Line | Command/Data | 8-Bit Packet |
 |------|-------|-------|---------|
 | 66 | Data | `0xE7` |
 | 277 | Command | `0xB9` |
 | 289 | Command | `0x11` |
 | 295 | Command | `0x06` |
+
+![alt text](http://i.imgur.com/AnmCYr4.jpg "Reset Timing")
+
+## Code Walkthrough
+
+
 
 #### Initialization
 
@@ -41,24 +54,11 @@ The purpose of this lab is to familiarize us with SPI, I/O, and hardware/softwar
 
 ## Debugging
 
-Debugging was done through iterative and line-by-line testing. Looking at each register and memory location after executing an instruction, I hunted down mistakes and corrected them. There were no major code overhauls. No issues requiring debugging exist in the current version of the code.
-
-Only the A functionality test required some serious debugging since it depends on educated guesswork. I noticed the byte `0x90` appeared quite a bit and it was also the last byte of the message, so I guessed it was a period. I inputted a `"."` into `guess2` and started out with a `" "` in `guess1` since I figured the other most likely byte should be a space (even though they could both be periods). I received the following result:
-
-![alt text](http://i.imgur.com/JnVPzRh.png "Guess 1")
-
-Looking at the result, we notice about half the message makes sense. Everything keyed off `guess2` is a reasonable character. Therefore, I assumed `guess2` was correct and progressed onto determining the correct value of `guess1`. I moved onto vowels, starting with `"a"`. I received the following result:
-
-![alt text](http://i.imgur.com/lxELMPH.png "Guess 2")
-
-
-
-![alt text](http://i.imgur.com/KsmQd8K.png "Guess 3")
 
 
 ## Testing Methodology/Results
 
-[Three test cases](http://ece382.com/labs/lab2/index.html) are provided on the [ECE 382 Website](http://ece382.com). The tests and results are found below.
+
 
 #### Required Functionality
 
