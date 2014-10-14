@@ -169,7 +169,7 @@ I was able to meet the required and "A" functionality.
 ![alt text](http://i.imgur.com/HcHysIj.jpg "A WILD BOX APPEARS!")
 
 ### A Functionality
-
+###### **NOTE:** *Dr. York approved this solution as an alternative solution for A Functionality*
 ##### Press the right button (`SW1`) and then hit `SW3` again and another box appears directly next to the first.
 ![alt text](http://i.imgur.com/qPnxqb5.jpg "TWO wild boxes appear!")
 ##### This time follow the same procedure, but with the down button (`SW4`).
