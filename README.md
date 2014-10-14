@@ -34,6 +34,10 @@ The first non-bused signal is `SMCLK`, the second is `MOSI`
 ![alt text](http://i.imgur.com/Al6VBRp.jpg "3rd Signal")
 ![alt text](http://i.imgur.com/xX3yULg.jpg "4th Signal")
 
+##### Clearing Operations
+The following picture demonstrates how logic operations work on pixel bits.
+![alt text](http://i.imgur.com/6Gl1DRQ.png "Bit operations on pixels")
+
 ##### Signals Sent to Nokia 1202
 | Line | Command/Data | 8-Bit Packet |
 |------|-------|-------|---------|
